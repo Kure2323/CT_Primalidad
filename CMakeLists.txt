@@ -6,6 +6,10 @@ set(CMAKE_CXX_STANDARD 20)
 add_executable(Primos
         src/main.cpp
         include/Eratosthenes.cpp
+        include/Eratosthenes.h
+        include/Eratosthenes.cpp
+        include/Fermat.cpp
+        include/Fermat.h
 )
 
 include(FetchContent)

@@ -3,9 +3,10 @@
 //
 // Created by polete on 10/14/26.
 //
-std::vector<int> Eratosthenes(const int n) {
+std::vector<int> Eratosthenes(const unsigned int n) {
     // Vector completo de true
     std::vector _primos(n+1, true);
+    _primos[1] = false;
 
     for (int i = 2; i*i <= n; i++) {
         if (_primos[i] == false) {
