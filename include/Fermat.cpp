@@ -20,6 +20,8 @@
  */
 bool Fermat(const unsigned int n, unsigned int& base) {
 
+    if (n == 2) return true;
+
     if (base == 0 || base >= n) {
         base = rand() % (n-2) + 2; // Random entre 2 y n-1
     }
@@ -43,7 +45,7 @@ bool Fermat(const unsigned int n, unsigned int& base) {
  * @param n
  * @return primos según Fermat/n-2
  */
-double cocienteDePrimalidad(const unsigned int n) {
+double prime_ratio(const unsigned int n) {
     if (n < 3) return 0.0;
 
     unsigned int count = 0;

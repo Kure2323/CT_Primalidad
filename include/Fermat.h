@@ -7,7 +7,7 @@
 
 
 bool Fermat(unsigned int n, unsigned int& base);
-double cocienteDePrimalidad(unsigned int n);
+double prime_ratio(unsigned int n);
 
 
 #endif //PRIMOS_FERMAT_H

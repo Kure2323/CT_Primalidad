@@ -4,6 +4,7 @@
 // Created by polete on 10/14/26.
 //
 std::vector<int> Eratosthenes(const unsigned int n) {
+    if (n < 2) return std::vector<int>();
     // Vector completo de true
     std::vector _primos(n+1, true);
     _primos[1] = false;
