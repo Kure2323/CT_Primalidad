@@ -3,10 +3,8 @@
 //
 
 #include "Fermat.h"
-
 #include <cstdlib>
-#include <ctime>
-#include <iostream>
+#include <numeric>
 
 /**
  * Dado que realizar operaciones con exponentes tan altos es inviable de computar, pues hace overwflow
@@ -20,6 +18,7 @@
  */
 bool Fermat(const unsigned int n, unsigned int& base) {
 
+    if (n < 2) return false;
     if (n == 2) return true;
 
     if (base == 0 || base >= n) {
@@ -32,11 +31,7 @@ bool Fermat(const unsigned int n, unsigned int& base) {
         rest = (static_cast<unsigned long long>(base)*rest) % n;
     }
 
-    if (rest == 1) {
-        // Es un posible primo
-        return true;
-    }
-    return false;
+    return rest == 1;
 }
 
 /**
@@ -53,4 +48,17 @@ double prime_ratio(const unsigned int n) {
         count += Fermat(n,i) ? 1 : 0;
     }
     return static_cast<double>(count) / (n-2);
+}
+
+bool is_carmichael(const unsigned int n) {
+    if (n < 561) return false;
+
+    for (unsigned int i = 2; i < n; i++) {
+        if (std::gcd(i, n) == 1) {
+            if (!Fermat(n, i)) {
+                return false;
+            }
+        }
+    }
+    return true;
 }

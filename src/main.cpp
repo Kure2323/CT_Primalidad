@@ -270,11 +270,13 @@ Component build_fermat() {
             state->resultado =
                 std::to_string(n) +
                 " supera el test de Fermat para la base " +
-                std::to_string(base) + ".\n\"Cociente de primalidad\": " + std::to_string(prime_ratio(n));
+                std::to_string(base) + ".\n\"Cociente de primalidad\": " + std::to_string(prime_ratio(n)) +
+                    "\nEs un número de Carmichael: " + (is_carmichael(n) ? "true" : "false");
         } else {
             state->resultado =
                 std::to_string(n) +
-                " es compuesto: no supera el test de Fermat para la base " + std::to_string(base) + ".\n\"Cociente de primalidad\": " + std::to_string(prime_ratio(n));
+                " es compuesto: no supera el test de Fermat para la base " + std::to_string(base) + ".\n\"Cociente de primalidad\": " + std::to_string(prime_ratio(n)) +
+                    "\nEs un número de Carmichael: " + (is_carmichael(n) ? "true" : "false");
         }
     });
 
@@ -350,7 +352,13 @@ Component build_fermat() {
                 "Por eso se trata de una prueba probabilística y conviene "
                 "probar varias bases. La elección de las bases influye "
                 "en la fiabilidad del resultado."
-            )
+                ),
+            separator(),
+            text("¿Qué son los números de Carmichael?") | bold,
+            paragraph(
+            "Los números de Carmichael son aquellos números compuestos "
+            "que superan el test de Fermat para todas las bases coprimas con ellos."
+            ),
         }) | border | yframe | yflex;
     });
 }
